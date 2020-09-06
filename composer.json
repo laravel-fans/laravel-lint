@@ -1,0 +1,38 @@
+{
+    "name": "laravel-fans/lint",
+    "description": "Laravel Lint Code Style",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "sinkcup",
+            "email": "sinkcup@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "LaravelFans\\Lint\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\": "vendor/orchestra/testbench-core/laravel/app/",
+            "LaravelFans\\Lint\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LaravelFans\\Lint\\LintServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "laravel/framework": ">=v6.18.38",
+        "squizlabs/php_codesniffer": "^3.5"
+    },
+    "require-dev": {
+        "orchestra/testbench": ">=v4.8.0"
+    }
+}
