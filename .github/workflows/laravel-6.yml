@@ -15,15 +15,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: PHPUnit
+      - name: Prepare
         run: |
           apt update
           apt install -y libzip-dev unzip
           pecl install xdebug
           docker-php-ext-enable xdebug
           curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+      - name: PHPUnit
+        run: |
           composer require orchestra/testbench:^v4 --dev
           ./vendor/bin/phpunit --coverage-clover coverage.xml --coverage-filter src/ tests/
+      - name: Lint
+        run: ./vendor/bin/phpcs --standard=PSR12 src/ tests/
       - name: codecov
         uses: codecov/codecov-action@v1
         with:
