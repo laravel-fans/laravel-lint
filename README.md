@@ -17,6 +17,8 @@ php artisan lint:publish
 
 ## use
 
+lint code:
+
 ```shell
 php artisan lint:check .
 php artisan lint:check app/ tests/
@@ -25,3 +27,11 @@ php artisan lint:staged
 ```
 
 The default standard is PSR-12, feel free to change the `phpcs.xml`.
+
+lint route URL:
+
+```shell
+php artisan lint:route
+```
+
+Slug(kebab-case) standard: lowercase ASCII letters, digits, and hyphens (a-z, 0–9, -)

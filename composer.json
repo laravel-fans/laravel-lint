@@ -30,7 +30,8 @@
     "minimum-stability": "stable",
     "require": {
         "laravel/framework": ">=v6.18.38",
-        "squizlabs/php_codesniffer": "^3.5"
+        "squizlabs/php_codesniffer": "^3.5",
+        "ext-json": "*"
     },
     "require-dev": {
         "orchestra/testbench": ">=v4.8.0"

@@ -17,6 +17,7 @@ class LintServiceProvider extends ServiceProvider
             $this->commands([
                 LintCheckCommand::class,
                 LintPublishCommand::class,
+                LintRouteCommand::class,
                 LintStagedCommand::class,
             ]);
         }
@@ -32,6 +33,7 @@ class LintServiceProvider extends ServiceProvider
         return [
             LintCheckCommand::class,
             LintPublishCommand::class,
+            LintRouteCommand::class,
             LintStagedCommand::class,
         ];
     }
