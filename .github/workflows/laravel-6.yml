@@ -21,6 +21,8 @@ jobs:
           apt install -y libzip-dev unzip
           pecl install xdebug
           docker-php-ext-enable xdebug
+          cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini
+          echo 'xdebug.mode=coverage' >> /usr/local/etc/php/php.ini
           curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
       - name: PHPUnit
         run: |
