@@ -12,7 +12,7 @@ Check Code Style(default PSR-12) for Laravel
 Run in your Laravel project:
 
 ```shell
-composer install --dev laravel-fans/lint
+composer require --dev laravel-fans/lint
 php artisan lint:publish
 ```
 
