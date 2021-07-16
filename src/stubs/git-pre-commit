@@ -1,3 +1,7 @@
 #!/bin/sh
 
-git diff --diff-filter=d --name-only HEAD | grep ".php$" | xargs ./vendor/bin/phpcs --standard=phpcs.xml
+CHANGED_PHP=$(git diff --diff-filter=d --name-only HEAD | grep ".php$")
+
+if [ -n "$CHANGED_PHP" ] ; then
+	./vendor/bin/phpcs --standard=phpcs.xml $CHANGED_PHP
+fi
