@@ -12,6 +12,7 @@ class LintPublishCommandTest extends TestCase
         File::deleteDirectory($laravelPath . '/.git/', true);
         $this->artisan('lint:publish')->run();
         $this->assertFileExists($laravelPath . '/phpcs.xml');
+        $this->assertFileExists($laravelPath . '/phpmd.xml');
         $this->assertFileDoesNotExist($laravelPath . '/.git/hooks/pre-commit');
     }
 
@@ -21,6 +22,7 @@ class LintPublishCommandTest extends TestCase
         File::makeDirectory($laravelPath . '/.git/hooks/', 0755, true);
         $this->artisan('lint:publish')->run();
         $this->assertFileExists($laravelPath . '/phpcs.xml');
+        $this->assertFileExists($laravelPath . '/phpmd.xml');
         $this->assertFileExists($laravelPath . '/.git/hooks/pre-commit');
     }
 }
