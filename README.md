@@ -16,20 +16,21 @@ composer require --dev laravel-fans/lint
 php artisan lint:publish
 ```
 
-## use
+## usage
 
-lint code:
+### lint code
 
 ```shell
-php artisan lint:check .
-php artisan lint:check app/ tests/
-php artisan lint:check --standard=Squiz app/
+php artisan lint:code
+php artisan lint:code --fix
+php artisan lint:code app/ tests/
+php artisan lint:code --standard=Squiz app/
 php artisan lint:staged
 ```
 
-The default standard is PSR-12, feel free to change the `phpcs.xml`.
+The default standard is `phpcs.xml`, feel free to change it.
 
-lint route URL:
+### lint route URI
 
 ```shell
 php artisan lint:route
