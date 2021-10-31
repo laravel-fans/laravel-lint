@@ -6,14 +6,14 @@ use FilesystemIterator;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 
-class LintCheckCommand extends Command
+class LintCodeCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'lint:check
+    protected $signature = 'lint:code
         {files*}
         {--standard=phpcs.xml : coding standards}';
 
@@ -22,7 +22,7 @@ class LintCheckCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Lint files';
+    protected $description = 'Lint code files';
 
     /**
      * Execute the console command.
