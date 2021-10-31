@@ -16,6 +16,7 @@ class LintServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 LintCheckCommand::class,
+                LintFixCommand::class,
                 LintPublishCommand::class,
                 LintRouteCommand::class,
                 LintStagedCommand::class,
