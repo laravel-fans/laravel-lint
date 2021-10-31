@@ -14,7 +14,7 @@ class LintCodeCommand extends Command
      * @var string
      */
     protected $signature = 'lint:code
-        {files*}
+        {files?*}
         {--fix : automatic fix}
         {--standard=phpcs.xml : coding standards}';
 
@@ -33,9 +33,11 @@ class LintCodeCommand extends Command
     public function handle()
     {
         $bin = $this->option('fix') ? 'phpcbf' : 'phpcs';
+        $files = empty($this->argument('files')) ? [ '.' ] : $this->argument('files');
+
         exec(
             "vendor/bin/$bin --standard=" . $this->option('standard')
-            . ' ' . implode(' ', $this->argument('files')),
+            . ' ' . implode(' ', $files),
             $output,
             $code
         );
