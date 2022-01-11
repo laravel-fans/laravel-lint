@@ -31,7 +31,7 @@ jobs:
       - name: Lint
         run: |
           ./vendor/bin/phpcs --standard=PSR12 src/ tests/
-          ./vendor/bin/phpmd src/ text src/stubs/phpmd.xml --exclude vendor
+          ./vendor/bin/phpmd src/ text src/stubs/phpmd.xml
       - name: codecov
         uses: codecov/codecov-action@v2
         with:
