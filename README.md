@@ -4,6 +4,7 @@
 [![Laravel 6](https://github.com/laravel-fans/laravel-lint/workflows/Laravel%206/badge.svg)](https://github.com/laravel-fans/laravel-lint/actions)
 [![Laravel 7](https://github.com/laravel-fans/laravel-lint/workflows/Laravel%207/badge.svg)](https://github.com/laravel-fans/laravel-lint/actions)
 [![Laravel 8](https://github.com/laravel-fans/laravel-lint/workflows/Laravel%208/badge.svg)](https://github.com/laravel-fans/laravel-lint/actions)
+[![Laravel 9](https://github.com/laravel-fans/laravel-lint/workflows/Laravel%209/badge.svg)](https://github.com/laravel-fans/laravel-lint/actions)
 
 Check Code Style(default PSR-12) for Laravel
 
