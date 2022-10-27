@@ -34,10 +34,12 @@ class LintCodeCommand extends Command
     {
         $bin = $this->option('fix') ? 'phpcbf' : 'phpcs';
         $files = empty($this->argument('files')) ? [ '.' ] : $this->argument('files');
-
-        exec(
-            "vendor/bin/$bin --standard=" . $this->option('standard')
-            . ' ' . implode(' ', $files),
+        $command = "vendor/bin/$bin --standard=";
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+            $command = "vendor\\bin\\$bin --standard=";
+        }
+        $command .= $this->option('standard') . ' ' . implode(' ', $files);
+        exec($command,
             $output,
             $code
         );
