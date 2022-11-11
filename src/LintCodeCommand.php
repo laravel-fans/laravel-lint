@@ -39,7 +39,8 @@ class LintCodeCommand extends Command
             $command = "vendor\\bin\\$bin --standard=";
         }
         $command .= $this->option('standard') . ' ' . implode(' ', $files);
-        exec($command,
+        exec(
+            $command,
             $output,
             $code
         );
