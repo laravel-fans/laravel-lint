@@ -35,9 +35,8 @@ class LintCodeCommand extends Command
         $bin = $this->option('fix') ? 'phpcbf' : 'phpcs';
         $files = empty($this->argument('files')) ? ['.'] : $this->argument('files');
         $command = "vendor" . DIRECTORY_SEPARATOR . "bin" . DIRECTORY_SEPARATOR . "$bin --standard=";
-        $command .= $this->option('standard') . ' ' . implode(' ', $files);
         exec(
-            $command,
+            $command . $this->option('standard') . ' ' . implode(' ', $files),
             $output,
             $code
         );
