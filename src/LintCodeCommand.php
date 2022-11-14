@@ -33,11 +33,10 @@ class LintCodeCommand extends Command
     public function handle()
     {
         $bin = $this->option('fix') ? 'phpcbf' : 'phpcs';
-        $files = empty($this->argument('files')) ? [ '.' ] : $this->argument('files');
-
+        $files = empty($this->argument('files')) ? ['.'] : $this->argument('files');
+        $command = "vendor" . DIRECTORY_SEPARATOR . "bin" . DIRECTORY_SEPARATOR . "$bin --standard=";
         exec(
-            "vendor/bin/$bin --standard=" . $this->option('standard')
-            . ' ' . implode(' ', $files),
+            $command . $this->option('standard') . ' ' . implode(' ', $files),
             $output,
             $code
         );
