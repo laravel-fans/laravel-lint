@@ -39,6 +39,6 @@ jobs:
         run: |
           rm -rf laravel-demo
           composer create-project --prefer-dist laravel/laravel laravel-demo "9.*"
-          cd laravel-demo && composer require --dev laravel-fans/lint:dev-${CI_ACTION_REF_NAME} && php artisan lint:publish
+          cd laravel-demo && composer require --dev laravel-fans/lint:dev-${{ github.ref_name }} && php artisan lint:publish
           php artisan lint:code --help
           php artisan lint:code /database/seeds/
