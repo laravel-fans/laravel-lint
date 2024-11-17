@@ -15,10 +15,11 @@ class LintPhpcsCommandTest extends TestCase
             ->setName("exec")
             ->setFunction(
                 function ($command, &$output, &$code) {
-                $this->assertEquals("vendor/bin/phpcs --standard=phpcs.xml .", $command);
-                $output = [];
-                $code = 0;
-            });
+                    $this->assertEquals("vendor/bin/phpcs --standard=phpcs.xml .", $command);
+                    $output = [];
+                    $code = 0;
+                }
+            );
         $mock = $builder->build();
         $mock->enable();
         $this->artisan('lint:phpcs')->assertExitCode(0);

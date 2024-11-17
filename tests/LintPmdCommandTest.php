@@ -15,10 +15,11 @@ class LintPmdCommandTest extends TestCase
             ->setName("exec")
             ->setFunction(
                 function ($command, &$output, &$code) {
-                $this->assertEquals("vendor/bin/phpmd . text phpmd.xml", $command);
-                $output = [];
-                $code = 1;
-            });
+                    $this->assertEquals("vendor/bin/phpmd . text phpmd.xml", $command);
+                    $output = [];
+                    $code = 1;
+                }
+            );
         $mock = $builder->build();
         $mock->enable();
         $this->artisan('lint:pmd')->assertExitCode(1);
