@@ -41,4 +41,4 @@ jobs:
           composer create-project --prefer-dist laravel/laravel laravel-demo "9.*"
           cd laravel-demo && composer require --dev laravel-fans/lint:dev-${{ github.ref_name }} && php artisan lint:publish
           php artisan lint:code --help
-          php artisan lint:code database/seeders/
+          php artisan lint:code database/
