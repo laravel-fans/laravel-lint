@@ -1,10 +1,9 @@
 # Laravel Lint
 
-[![codecov](https://codecov.io/gh/laravel-fans/laravel-lint/branch/main/graph/badge.svg)](https://codecov.io/gh/laravel-fans/laravel-lint)
-[![Laravel 6](https://github.com/laravel-fans/laravel-lint/workflows/Laravel%206/badge.svg)](https://github.com/laravel-fans/laravel-lint/actions)
-[![Laravel 7](https://github.com/laravel-fans/laravel-lint/workflows/Laravel%207/badge.svg)](https://github.com/laravel-fans/laravel-lint/actions)
-[![Laravel 8](https://github.com/laravel-fans/laravel-lint/workflows/Laravel%208/badge.svg)](https://github.com/laravel-fans/laravel-lint/actions)
-[![Laravel 9](https://github.com/laravel-fans/laravel-lint/workflows/Laravel%209/badge.svg)](https://github.com/laravel-fans/laravel-lint/actions)
+[![codecov](https://codecov.io/gh/laravel-fans/laravel-lint/graph/badge.svg?token=QJjYkPVnr4)](https://codecov.io/gh/laravel-fans/laravel-lint)
+![Packagist Downloads](https://img.shields.io/packagist/dm/laravel-fans/lint)
+[![Laravel 8](https://github.com/laravel-fans/laravel-lint/actions/workflows/laravel-8.yml/badge.svg)](https://github.com/laravel-fans/laravel-lint/actions/workflows/laravel-8.yml)
+[![Laravel 9](https://github.com/laravel-fans/laravel-lint/actions/workflows/laravel-9.yml/badge.svg)](https://github.com/laravel-fans/laravel-lint/actions/workflows/laravel-9.yml)
 
 Check Code Style(default PSR-12) for Laravel
 

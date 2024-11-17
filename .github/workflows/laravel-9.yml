@@ -11,28 +11,34 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     container:
-      image: php:8.1-cli
+      image: laravelfans/laravel:9-dev
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Prepare
-        run: |
-          apt update
-          apt install -y libzip-dev unzip
-          pecl install xdebug
-          docker-php-ext-enable xdebug
-          cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini
-          echo 'xdebug.mode=coverage' >> /usr/local/etc/php/php.ini
-          curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-      - name: PHPUnit
+      -
+        name: Checkout
+        uses: actions/checkout@v4
+      -
+        name: PHPUnit
+        env:
+          XDEBUG_MODE: coverage
         run: |
           composer require orchestra/testbench:^v7 --dev
           ./vendor/bin/phpunit --coverage-clover coverage.xml --coverage-filter src/ tests/
-      - name: Lint
+      -
+        name: Lint
         run: |
           ./vendor/bin/phpcs --standard=PSR12 src/ tests/
           ./vendor/bin/phpmd . text src/stubs/phpmd.xml
-      - name: codecov
-        uses: codecov/codecov-action@v2
+      -
+        name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
         with:
           name: laravel-9
+          token: ${{ secrets.CODECOV_TOKEN }}
+      -
+        name: install in real Laravel project
+        run: |
+          rm -rf laravel-demo
+          composer create-project --prefer-dist laravel/laravel laravel-demo "9.*"
+          cd laravel-demo && composer require --dev laravel-fans/lint:dev-${CI_ACTION_REF_NAME} && php artisan lint:publish
+          php artisan lint:code --help
+          php artisan lint:code /database/seeds/
