@@ -34,7 +34,7 @@ class LintCodeCommand extends Command
         $code = $this->call('lint:phpcs', [
             'files' => $this->argument('files'), '--fix' => $this->option('fix')
         ]);
-        $code += $this->call('lint:phpmd', [
+        $code += $this->call('lint:pmd', [
             'files' => $this->argument('files')
         ]);
         return $code;
