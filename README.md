@@ -25,7 +25,9 @@ php artisan lint:publish
 php artisan lint:code
 php artisan lint:code --fix
 php artisan lint:code app/ tests/
-php artisan lint:code --standard=Squiz app/
+php artisan lint:code app/ tests/ --fix
+php artisan lint:phpcs
+php artisan lint:pmd
 php artisan lint:staged
 ```
 
