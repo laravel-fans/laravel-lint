@@ -17,7 +17,16 @@ composer require --dev laravel-fans/lint
 php artisan lint:publish
 ```
 
+You will find `phpcs.xml` and `phpmd.xml` in your project, feel free to change it.
+
 ## usage
+
+### lint all
+
+```
+php artisan lint
+php artisan lint --fix
+```
 
 ### lint code
 
@@ -30,8 +39,6 @@ php artisan lint:phpcs
 php artisan lint:pmd
 php artisan lint:staged
 ```
-
-The default standard is `phpcs.xml`, feel free to change it.
 
 ### lint route URI
 

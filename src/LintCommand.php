@@ -6,14 +6,14 @@ use FilesystemIterator;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 
-class LintCodeCommand extends Command
+class LintCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'lint:code
+    protected $signature = 'lint
         {files?*}
         {--fix : automatic fix}';
 
@@ -22,7 +22,7 @@ class LintCodeCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Lint code files';
+    protected $description = 'Check code style of code(including tests and routes)';
 
     /**
      * Execute the console command.
@@ -36,6 +36,9 @@ class LintCodeCommand extends Command
         ]);
         if (!$this->option('fix')) {
             $code += $this->call('lint:pmd', [
+                'files' => $this->argument('files')
+            ]);
+            $code += $this->call('lint:route', [
                 'files' => $this->argument('files')
             ]);
         }
