@@ -38,9 +38,7 @@ class LintCommand extends Command
             $code += $this->call('lint:pmd', [
                 'files' => $this->argument('files')
             ]);
-            $code += $this->call('lint:route', [
-                'files' => $this->argument('files')
-            ]);
+            $code += $this->call('lint:route');
         }
         return $code;
     }
