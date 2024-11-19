@@ -30,6 +30,7 @@ jobs:
         run: |
           ./vendor/bin/phpcs --standard=PSR12 src/ tests/
           ./vendor/bin/phpmd . text src/stubs/phpmd.xml
+          ./vendor/bin/pint --test --config src/stubs/pint.json
       -
         name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4

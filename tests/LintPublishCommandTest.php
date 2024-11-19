@@ -21,6 +21,7 @@ class LintPublishCommandTest extends TestCase
         $laravelPath = __DIR__ . '/../vendor/orchestra/testbench-core/laravel';
         File::makeDirectory($laravelPath . '/.git/hooks/', 0755, true);
         $this->artisan('lint:publish')->run();
+        $this->assertFileExists($laravelPath . '/pint.json');
         $this->assertFileExists($laravelPath . '/phpcs.xml');
         $this->assertFileExists($laravelPath . '/phpmd.xml');
         $this->assertFileExists($laravelPath . '/.git/hooks/pre-commit');

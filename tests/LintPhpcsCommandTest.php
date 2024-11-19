@@ -2,9 +2,7 @@
 
 namespace LaravelFans\Lint\Tests;
 
-use Illuminate\Support\Facades\File;
 use phpmock\MockBuilder;
-use phpmock\functions\FixedValueFunction;
 
 class LintPhpcsCommandTest extends TestCase
 {

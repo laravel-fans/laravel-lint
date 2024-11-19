@@ -2,6 +2,8 @@
 
 FILES=$(git diff --diff-filter=d --name-only HEAD | { grep '.php$' || true; })
 for file in $FILES; do
+  ./vendor/bin/phpcs --config=pint.json --repair "$file"
+  ./vendor/bin/phpcbf --extensions=php --standard=phpcs.xml "$file"
   ./vendor/bin/phpcs --extensions=php --standard=phpcs.xml "$file"
   ./vendor/bin/phpmd "$file" text phpmd.xml
 done

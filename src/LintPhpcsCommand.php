@@ -2,9 +2,7 @@
 
 namespace LaravelFans\Lint;
 
-use FilesystemIterator;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\File;
 
 class LintPhpcsCommand extends Command
 {

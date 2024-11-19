@@ -2,9 +2,7 @@
 
 namespace LaravelFans\Lint;
 
-use FilesystemIterator;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\File;
 
 class LintCommand extends Command
 {
@@ -34,7 +32,15 @@ class LintCommand extends Command
         $code = $this->call('lint:phpcs', [
             'files' => $this->argument('files'), '--fix' => $this->option('fix')
         ]);
+        if ($this->option('fix')) {
+            $code = $this->call('lint:pint', [
+                'files' => $this->argument('files'), '--repair' => true
+            ]);
+        }
         if (!$this->option('fix')) {
+            $code = $this->call('lint:pint', [
+                'files' => $this->argument('files'), '--test' => true
+            ]);
             $code += $this->call('lint:pmd', [
                 'files' => $this->argument('files')
             ]);

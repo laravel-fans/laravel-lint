@@ -4,23 +4,23 @@ namespace LaravelFans\Lint\Tests;
 
 use phpmock\MockBuilder;
 
-class LintPmdCommandTest extends TestCase
+class LintPintCommandTest extends TestCase
 {
-    public function testLintPmdWithoutArgs()
+    public function testLintPintWithoutArgs()
     {
         $builder = new MockBuilder();
         $builder->setNamespace('\\LaravelFans\\Lint')
             ->setName("exec")
             ->setFunction(
                 function ($command, &$output, &$code) {
-                    $this->assertEquals("vendor/bin/phpmd . text phpmd.xml", $command);
+                    $this->assertEquals("vendor/bin/pint --config=pint.json .", $command);
                     $output = [];
-                    $code = 1;
+                    $code = 0;
                 }
             );
         $mock = $builder->build();
         $mock->enable();
-        $this->artisan('lint:pmd')->assertExitCode(1);
+        $this->artisan('lint:pint')->assertExitCode(0);
         $mock->disable();
     }
 }

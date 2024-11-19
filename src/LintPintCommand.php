@@ -4,24 +4,25 @@ namespace LaravelFans\Lint;
 
 use Illuminate\Console\Command;
 
-class LintPmdCommand extends Command
+class LintPintCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'lint:pmd
-        {files?*}
-        {--format=text}
-        {--ruleset=phpmd.xml}';
+    protected $signature = 'lint:pint
+        {--test}
+        {--repair}
+        {--config=pint.json}
+        {files?*}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Lint by phpmd';
+    protected $description = 'Lint by pint';
 
     /**
      * Execute the console command.
@@ -31,9 +32,16 @@ class LintPmdCommand extends Command
     public function handle()
     {
         $files = empty($this->argument('files')) ? ['.'] : $this->argument('files');
-        $command = "vendor" . DIRECTORY_SEPARATOR . "bin" . DIRECTORY_SEPARATOR . "phpmd ";
+        $command = "vendor" . DIRECTORY_SEPARATOR . "bin" . DIRECTORY_SEPARATOR . "pint";
+        $command .= " --config=" . $this->option('config');
+        if ($this->option('test')) {
+            $command .= ' --test';
+        }
+        if ($this->option('repair')) {
+            $command .= ' --repair';
+        }
         exec(
-            $command . implode(' ', $files) . ' ' . $this->option('format') . ' ' . $this->option('ruleset'),
+            $command . ' ' . implode(' ', $files),
             $output,
             $code
         );

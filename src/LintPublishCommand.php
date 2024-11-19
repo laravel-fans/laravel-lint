@@ -30,6 +30,9 @@ class LintPublishCommand extends Command
     {
         $basePath = $this->laravel->basePath();
 
+        if (!File::exists($basePath . '/pint.json')) {
+            File::copy(__DIR__ . '/stubs/pint.json', $basePath . '/pint.json');
+        }
         if (!File::exists($basePath . '/phpcs.xml')) {
             File::copy(__DIR__ . '/stubs/phpcs.xml', $basePath . '/phpcs.xml');
         }

@@ -17,7 +17,7 @@ composer require --dev laravel-fans/lint
 php artisan lint:publish
 ```
 
-You will find `phpcs.xml` and `phpmd.xml` in your project, feel free to change it.
+You will find `pint.json`, `phpcs.xml` and `phpmd.xml` in your project, feel free to change it.
 
 ## usage
 
@@ -35,15 +35,16 @@ php artisan lint:code
 php artisan lint:code --fix
 php artisan lint:code app/ tests/
 php artisan lint:code app/ tests/ --fix
+php artisan lint:pint
 php artisan lint:phpcs
 php artisan lint:pmd
 php artisan lint:staged
 ```
 
-### lint route URI
+### lint route
 
 ```shell
 php artisan lint:route
 ```
 
-Slug(kebab-case) standard: lowercase ASCII letters, digits, and hyphens (a-z, 0–9, -)
+Slug(kebab-case) URI standard: lowercase ASCII letters, digits, and hyphens (a-z, 0–9, -)

@@ -17,6 +17,7 @@ class LintServiceProvider extends ServiceProvider
             $this->commands([
                 LintCommand::class,
                 LintCodeCommand::class,
+                LintPintCommand::class,
                 LintPmdCommand::class,
                 LintPhpcsCommand::class,
                 LintPublishCommand::class,
