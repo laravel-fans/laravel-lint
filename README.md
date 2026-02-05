@@ -4,6 +4,7 @@
 [![Packagist Downloads](https://img.shields.io/packagist/dm/laravel-fans/lint)](https://packagist.org/packages/laravel-fans/lint)
 [![Laravel 10](https://github.com/laravel-fans/laravel-lint/actions/workflows/laravel-10.yml/badge.svg)](https://github.com/laravel-fans/laravel-lint/actions/workflows/laravel-10.yml)
 [![Laravel 11](https://github.com/laravel-fans/laravel-lint/actions/workflows/laravel-11.yml/badge.svg)](https://github.com/laravel-fans/laravel-lint/actions/workflows/laravel-11.yml)
+[![Laravel 12](https://github.com/laravel-fans/laravel-lint/actions/workflows/laravel-12.yml/badge.svg)](https://github.com/laravel-fans/laravel-lint/actions/workflows/laravel-12.yml)
 
 Check Code Style(default PSR-12) for Laravel
 
