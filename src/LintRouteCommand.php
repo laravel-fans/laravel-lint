@@ -49,6 +49,9 @@ class LintRouteCommand extends Command
                 if (preg_match('/^{[^{]+}$/', $piece)) {
                     continue;
                 }
+                if (Str::endsWith($piece, ['.js', '.js.map', '.css'])) {
+                    continue;
+                }
                 if (!preg_match('/^[a-z0-9]+(-[a-z0-9]+)*$/', $piece)) {
                     $this->error('user-friendly URL should follow domain rules: '
                         . 'lowercase ASCII letters, digits, and hyphens (a-z, 0–9, -)');
