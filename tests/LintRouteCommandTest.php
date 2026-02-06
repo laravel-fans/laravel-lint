@@ -86,4 +86,17 @@ class LintRouteCommandTest extends TestCase
         $this->artisan('lint:route', ['--file' => $laravelPath . '/route.json'])
             ->assertExitCode(0);
     }
+
+    public function testMidExtensionRoute()
+    {
+        $laravelPath = __DIR__ . '/../vendor/orchestra/testbench-core/laravel';
+        File::put($laravelPath . '/route.json', json_encode([
+            [
+                'method' => 'GET',
+                'uri' => 'assets/app.js/something',
+            ],
+        ]));
+        $this->artisan('lint:route', ['--file' => $laravelPath . '/route.json'])
+            ->assertExitCode(1);
+    }
 }

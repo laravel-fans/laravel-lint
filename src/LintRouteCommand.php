@@ -44,12 +44,13 @@ class LintRouteCommand extends Command
                 return 1;
             }
             $tmp = explode('/', ltrim($route['uri'], '/'));
-            foreach ($tmp as $piece) {
+            $lastIndex = count($tmp) - 1;
+            foreach ($tmp as $index => $piece) {
                 // ignore variable
                 if (preg_match('/^{[^{]+}$/', $piece)) {
                     continue;
                 }
-                if (Str::endsWith($piece, ['.js', '.js.map', '.css'])) {
+                if ($index === $lastIndex && Str::endsWith($piece, ['.js', '.js.map', '.css'])) {
                     continue;
                 }
                 if (!preg_match('/^[a-z0-9]+(-[a-z0-9]+)*$/', $piece)) {
