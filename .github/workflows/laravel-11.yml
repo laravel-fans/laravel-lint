@@ -40,7 +40,8 @@ jobs:
       -
         name: install in real Laravel project
         run: |
+          BRANCH=${GITHUB_HEAD_REF:-$GITHUB_REF_NAME}
           rm -rf laravel-demo
           composer create-project --prefer-dist laravel/laravel laravel-demo "11.*"
-          cd laravel-demo && composer require --dev laravel-fans/lint:dev-${{ github.head_ref || github.ref_name }} && php artisan lint:publish
+          cd laravel-demo && composer require --dev laravel-fans/lint:dev-$BRANCH && php artisan lint:publish
           php artisan lint:code --help
