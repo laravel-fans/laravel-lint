@@ -3,6 +3,7 @@
 namespace LaravelFans\Lint;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
@@ -44,6 +45,9 @@ class LintRouteCommand extends Command
                 return 1;
             }
             $tmp = explode('/', ltrim($route['uri'], '/'));
+            if (Str::endsWith(Arr::last($tmp), ['.js', '.js.map', '.css'])) {
+                array_pop($tmp);
+            }
             foreach ($tmp as $piece) {
                 // ignore variable
                 if (preg_match('/^{[^{]+}$/', $piece)) {

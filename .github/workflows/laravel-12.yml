@@ -1,4 +1,4 @@
-name: Laravel 9
+name: Laravel 12
 on:
   push:
     paths-ignore:
@@ -13,7 +13,7 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     container:
-      image: laravelfans/laravel:9-dev
+      image: laravelfans/laravel:12-dev
     steps:
       -
         name: Checkout
@@ -23,23 +23,25 @@ jobs:
         env:
           XDEBUG_MODE: coverage
         run: |
-          composer require orchestra/testbench:^v7 --dev
+          composer require orchestra/testbench:^v10 --dev
           ./vendor/bin/phpunit --coverage-clover coverage.xml --coverage-filter src/ tests/
       -
         name: Lint
         run: |
           ./vendor/bin/phpcs --standard=PSR12 src/ tests/
           ./vendor/bin/phpmd . text src/stubs/phpmd.xml
+          ./vendor/bin/pint --test --config src/stubs/pint.json
       -
         name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
         with:
-          name: laravel-9
+          name: laravel-12
           token: ${{ secrets.CODECOV_TOKEN }}
       -
         name: install in real Laravel project
         run: |
+          BRANCH=${GITHUB_HEAD_REF:-$GITHUB_REF_NAME}
           rm -rf laravel-demo
-          composer create-project --prefer-dist laravel/laravel laravel-demo "9.*"
-          cd laravel-demo && composer require --dev laravel-fans/lint:dev-${{ github.ref_name }} && php artisan lint:publish
+          composer create-project --prefer-dist laravel/laravel laravel-demo "12.*"
+          cd laravel-demo && composer require --dev laravel-fans/lint:dev-$BRANCH && php artisan lint:publish
           php artisan lint:code --help
